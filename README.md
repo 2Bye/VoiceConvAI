@@ -26,12 +26,23 @@ Generates a summary of the conversation in SOAP format
 
 I used the base image - **nvcr.io/nvidia/pytorch:24.04-py3**
 
+
 ```sh
 apt update
 apt install ffmpeg
 
 pip install -r req.txt
 ```
+
+### System 
+
+System characteristics on which the project started and worked correctly
+
+- ubuntu 18.04
+- cuda 12.1 driver 530.41
+- 2x 3090
+- AMD Ryzen Threadripper 1920X 12-Core
+- 128 gb Ram
 
 ### Pyannote
 
@@ -52,6 +63,22 @@ git clone https://github.com/ggerganov/llama.cpp
 cd llama.cpp
 make
 ```
+
+## Usage
+
+In general, you can use any audio file that is supported by ffmpeg
+
+To run you need to enter the command in the console:
+
+```sh
+python main.py wav_path '/path/to/file' --llm True --device 'cpu'
+```
+
+Arguments:
+
+- **--wav_path** - path to your file (optional wav)
+- **--llm** - If True - LLama is used, if False - omi-health/sum-small is used
+- **--device** - CPU or GPU
 
 ## Results
 
